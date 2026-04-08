@@ -1,0 +1,7 @@
+{
+"project_name": "My ML Project",
+"project_slug": "ml_project",
+"author": "Ibrahima Fa Lo",
+"python_version": "3.12",
+"use_ci": ["yes", "no"]
+}
