@@ -1,1 +1,26 @@
-
+{% if cookiecutter.use_ci == "yes" %}
+# Contenu YAML du workflow CI
+name: CI
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "{{ cookiecutter.python_version }}"
+      - name: Install dependencies
+      run: |
+        pip install -U pip
+        pip install black pytest
+      - name: Run tests
+      run: pytest
+      - name: Check formatting
+      run: black --check .
+{% endif %}
